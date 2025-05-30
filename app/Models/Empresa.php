@@ -17,6 +17,7 @@ class Empresa extends Model
         'inscricao_municipal',
         'fone',
         'email',
+        'ambiente'
         ];
 
        public function endereco()

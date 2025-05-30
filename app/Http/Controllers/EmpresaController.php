@@ -43,6 +43,7 @@ class EmpresaController extends Controller
             'pais' => 'nullable|string|max:255|',
             'codigo_municipio' => 'required|string|max:20',
             'codigo_pais' => 'nullable|string|max:10|',
+            'ambiente' => 'nullable|string',
 
             // Campos condicionais
             'cnpj' => 'required_if:tipo_pessoa,cnpj|nullable|string|size:14',
@@ -65,6 +66,7 @@ class EmpresaController extends Controller
         try {
             DB::beginTransaction();
 
+            $data['ambiente'] = 'homologacao';
             // Cria a empresa
             $empresa = Empresa::create([
                 'tipo_pessoa' => $request->tipo_pessoa,
@@ -75,6 +77,7 @@ class EmpresaController extends Controller
                 'inscricao_municipal' => $request->inscricao_municipal,
                 'fone' => $request->fone,
                 'email' => $request->email,
+               
             ]);
 
             $pais = $request->pais ?? 'Brasil';
@@ -94,7 +97,7 @@ class EmpresaController extends Controller
                 'codigo_pais' => $codigo_pais,
             ]);
 
-            // Log::info('Endereço criado:', $endereco->toArray());
+             Log::info('Endereço criado:', $endereco->toArray());
             
             DB::commit();
 
