@@ -16,17 +16,17 @@ return new class extends Migration
 
         $table->string('tipo', 50); // Ex: 'entrega', 'retirada', 'destinatario'
 
-        $table->string('logradouro', 60);
-        $table->string('numero', 60);
-        $table->string('complemento', 60)->nullable();
-        $table->string('bairro', 255);
-        $table->string('cidade', 60);
-        $table->string('uf', 2);
-        $table->string('cep', 20);
-        $table->string('pais', 60)->default('Brasil');
-        $table->string('codigo_municipio', 20);
-        $table->string('codigo_pais', 10)->default('1058');
-
+        $table->string('xlgr', 60); // logradouro
+        $table->string('nro', 60); // numero
+        $table->string('xCpl', 60)->nullable(); // complemento
+        $table->string('xBairro', 255); // bairro
+        $table->string('cMun', 20); // Código do municipio
+        $table->string('xMun', 60); // Nome do municipio
+        $table->string('UF', 2);
+        $table->string('CEP', 20);
+        $table->string('cPais', 10)->default('1058'); // Código do Pais
+        $table->string('xPais', 60)->default('Brasil');
+        $table->string('fone')->nullable();
         $table->timestamps();
 });
     }

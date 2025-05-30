@@ -94,9 +94,11 @@ class EmpresaController extends Controller
                 'codigo_pais' => $codigo_pais,
             ]);
 
-            Log::info('Endereço criado:', $endereco->toArray());
+            // Log::info('Endereço criado:', $endereco->toArray());
             
             DB::commit();
+
+            app(NuvemFiscalService::class)->cadastrarEmpresa($empresa, $endereco);
 
             return redirect()->route('dashboard')
                 ->with('success', 'Empresa cadastrada com sucesso!');
