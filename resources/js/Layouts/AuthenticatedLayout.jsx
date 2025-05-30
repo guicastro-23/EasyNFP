@@ -21,13 +21,51 @@ export default function AuthenticatedLayout({ header, children }) {
                                 </Link>
                             </div>
 
-                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex items-center">
                                 <NavLink
                                     href={route('dashboard')}
                                     active={route().current('dashboard')}
                                 >
                                     Dashboard
                                 </NavLink>
+
+                                <Dropdown>
+                                    <Dropdown.Trigger>
+                                        <span className="inline-flex rounded-md">
+                                            <button
+                                                type="button"
+                                                className="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none dark:bg-gray-800 dark:text-gray-400 dark:hover:text-gray-300"
+                                            >
+                                                Cadastro
+                                                <svg
+                                                    className="ml-2 -mr-0.5 h-4 w-4"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 20 20"
+                                                    fill="currentColor"
+                                                >
+                                                    <path
+                                                        fillRule="evenodd"
+                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                        clipRule="evenodd"
+                                                    />
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </Dropdown.Trigger>
+                                    <Dropdown.Content align="left" width="48">
+                                    <Dropdown.Link href={route('empresa.create')}>
+                                            Empresa
+                                        </Dropdown.Link>
+
+                                        <Dropdown.Link href="#">
+                                            Cliente
+                                        </Dropdown.Link>
+
+                                        <Dropdown.Link href="#">
+                                            Produtos
+                                        </Dropdown.Link>
+                                    </Dropdown.Content>
+                                </Dropdown>
                             </div>
                         </div>
 
@@ -59,7 +97,7 @@ export default function AuthenticatedLayout({ header, children }) {
 
                                     <Dropdown.Content>
                                         <Dropdown.Link href={route('profile.edit')}>Profile</Dropdown.Link>
-                                        <Dropdown.Link>Dados da empresa</Dropdown.Link>
+
                                         <Dropdown.Link href={route('logout')} method="post" as="button">
                                             Log Out
                                         </Dropdown.Link>
@@ -116,6 +154,10 @@ export default function AuthenticatedLayout({ header, children }) {
                             <ResponsiveNavLink href={route('profile.edit')}>
                                 Profile
                             </ResponsiveNavLink>
+                            <ResponsiveNavLink href={route('empresa.create')}>
+                                Dados Da Empresa
+                            </ResponsiveNavLink>
+
                             <ResponsiveNavLink method="post" href={route('logout')} as="button">
                                 Log Out
                             </ResponsiveNavLink>
@@ -134,16 +176,31 @@ export default function AuthenticatedLayout({ header, children }) {
                 {/* Sidebar visível apenas em telas maiores */}
                 <aside className="hidden sm:block w-64 bg-white dark:bg-gray-800 shadow p-4">
                     <ul className="space-y-2">
-                        <li>
-                            <Link href={route('dashboard')} className="text-gray-700 dark:text-gray-200 hover:underline">
-                                Dashboard
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href={route('empresa.create')} className="text-gray-700 dark:text-gray-200 hover:underline">
-                                Dados Da Empresa
-                            </Link>
-                        </li>
+                        <div className="mb-9"> {/* mb distancia entre as div  */}
+                            <li>
+                                <Link href={route('dashboard')} className="text-gray-700 dark:text-gray-200 hover:underline">
+                                    Dashboard
+                                </Link>
+                            </li>
+                        </div>
+
+                        <div className="mb-4">
+                            <h3 className="mb-1 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                                Configurações
+                            </h3>
+
+                            <li>
+                                <Link href={route('empresa.create')} className="text-gray-700 dark:text-gray-200 hover:underline">
+                                    Dados Da Empresa
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href='configura' className="text-gray-700 dark:text-gray-200 hover:underline">
+                                    Configurações
+                                </Link>
+                            </li>
+                        </div>
+
                         {/* Adicione mais links conforme necessário */}
                     </ul>
                 </aside>

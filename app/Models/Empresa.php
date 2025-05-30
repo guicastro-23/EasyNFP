@@ -15,7 +15,7 @@ class Empresa extends Model
         'nome_fantasia',
         'inscricao_estadual',
         'inscricao_municipal',
-        'telefone',
+        'fone',
         'email',
         ];
 
