@@ -17,7 +17,10 @@ class Empresa extends Model
         'inscricao_municipal',
         'fone',
         'email',
-        'ambiente'
+        'ambiente',
+        'crt',     
+        'cnae', 
+
         ];
 
        public function endereco()

@@ -24,7 +24,10 @@ export default function EmpresaForm() {
     uf: '',
     pais: 'Brasil',
     codigo_municipio: '',
-    codigo_pais: '1058'
+    codigo_pais: '1058',
+    crt: '',
+    cnae: ''
+
   });
 
   const handleSubmit = (e) => {
@@ -35,7 +38,7 @@ export default function EmpresaForm() {
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white rounded shadow">
       <h1 className="text-2xl font-bold mb-6">Cadastro de Empresa / Produtor</h1>
-      
+
       {errors && (
         <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
           <h3 className="font-bold">Erros encontrados:</h3>
@@ -273,6 +276,39 @@ export default function EmpresaForm() {
             onChange={(e) => setData('codigo_pais', e.target.value)}
           />
         </div>
+
+        {/* CRT - Código de Regime Tributário */}
+        <div>
+          <label className="font-semibold">Regime Tributário (CRT)</label>
+          <select
+            className="w-full border rounded p-2 mt-1"
+            value={data.crt || ''}
+            onChange={(e) => setData('crt', e.target.value)}
+          >
+            <option value="">Selecione o regime tributário</option>
+            <option value="1">1 - Simples Nacional</option>
+            <option value="2">2 - Simples Nacional - excesso de sublimite de receita bruta</option>
+            <option value="3">3 - Regime Normal</option>
+            <option value="4">4 - Simples Nacional - Microempreendedor individual - MEI</option>
+          </select>
+          {errors.crt && <div className="text-red-500">{errors.crt}</div>}
+        </div>
+
+        {/* CNAE */}
+        <div>
+          <label className="font-semibold">CNAE (Classificação Nacional de Atividades Econômicas)</label>
+          <input
+            type="text"
+            className="w-full border rounded p-2 mt-1"
+            value={data.cnae || ''}
+            onChange={(e) => setData('cnae', e.target.value)}
+            placeholder="Ex: 5611201"
+          />
+          {errors.cnae && <div className="text-red-500">{errors.cnae}</div>}
+        </div>
+
+
+
 
         <div className="mt-6">
           <button

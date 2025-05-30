@@ -15,31 +15,15 @@ class NuvemFiscalService
     protected $clientId;
     protected $clientSecret;
     protected $tokenUrl = 'https://auth.nuvemfiscal.com.br/oauth/token';
+    protected $baseUrl;
 
-    public function __construct()
+    public function __construct($ambiente = 'homologacao') // padrão: homologação
     {
-        $this->clientId = config('services.nuvemfiscal.client_id');
-        $this->clientSecret = config('services.nuvemfiscal.client_secret');
-    }
+        $config = config("services.nuvemfiscal.$ambiente");
 
-    public function consultarCep(string $cep)
-    {
-        try {
-            // Obter token
-            $token = $this->getOauthToken();
-
-            // Configurar o token de acesso
-            $config = Configuration::getDefaultConfiguration()->setAccessToken($token->access_token);
-            $config->setBooleanFormatForQueryString(Configuration::BOOLEAN_FORMAT_STRING);
-
-            // Instanciar API
-            $apiInstance = new CepApi(new Client(), $config);
-
-            // Chamar a API
-            return $apiInstance->consultarCep($cep);
-        } catch (Exception $e) {
-            throw new Exception("Erro ao consultar o CEP: " . $e->getMessage());
-        }
+        $this->clientId = $config['client_id'];
+        $this->clientSecret = $config['client_secret'];
+        $this->baseUrl = $config['base_url'];
     }
 
     public function cadastrarEmpresa($empresa, $endereco)
@@ -49,7 +33,7 @@ class NuvemFiscalService
 
             $client = new Client();
 
-            $response = $client->post('https://api.sandbox.nuvemfiscal.com.br/empresas', [ //https://api.nuvemfiscal.com.br/empresas
+            $response = $client->post("{$this->baseUrl}/empresas", [
                 'headers' => [
                     'Authorization' => 'Bearer ' . $token->access_token,
                     'Accept' => 'application/json',
@@ -78,29 +62,24 @@ class NuvemFiscalService
                 ]
             ]);
 
-            // Valida se o status de retorno é 200 ou 201 (sucesso ou criado)
             if (!in_array($response->getStatusCode(), [200, 201])) {
                 throw new Exception("Erro ao cadastrar empresa na Nuvem Fiscal. Código HTTP: " . $response->getStatusCode());
             }
 
-            $dados = json_decode($response->getBody()->getContents());
+            return json_decode($response->getBody()->getContents());
 
-            // Log da resposta (para ver no storage/logs/laravel.log)
-            // Log::info('Empresa cadastrada na Nuvem Fiscal com sucesso.', (array) $dados);
-
-            return $dados;
         } catch (RequestException $e) {
             $statusCode = $e->getResponse() ? $e->getResponse()->getStatusCode() : 'Sem resposta';
             $errorBody = $e->getResponse() ? $e->getResponse()->getBody()->getContents() : 'Sem detalhes';
 
             Log::error("Erro HTTP ao chamar a Nuvem Fiscal. Código: $statusCode - Detalhes: $errorBody");
-
             throw new Exception("Erro HTTP ao cadastrar empresa na Nuvem Fiscal.");
         } catch (Exception $e) {
             Log::error("Erro geral ao cadastrar empresa na Nuvem Fiscal: " . $e->getMessage());
             throw new Exception("Erro geral ao cadastrar empresa na Nuvem Fiscal.");
         }
     }
+
     private function getOauthToken()
     {
         $client = new Client();
@@ -117,3 +96,27 @@ class NuvemFiscalService
         return json_decode($response->getBody()->getContents());
     }
 }
+
+
+    
+    // public function consultarCep(string $cep)
+    // {
+    //     try {
+    //         // Obter token
+    //         $token = $this->getOauthToken();
+
+    //         // Configurar o token de acesso
+    //         $config = Configuration::getDefaultConfiguration()->setAccessToken($token->access_token);
+    //         $config->setBooleanFormatForQueryString(Configuration::BOOLEAN_FORMAT_STRING);
+
+    //         // Instanciar API
+    //         $apiInstance = new CepApi(new Client(), $config);
+
+    //         // Chamar a API
+    //         return $apiInstance->consultarCep($cep);
+    //     } catch (Exception $e) {
+    //         throw new Exception("Erro ao consultar o CEP: " . $e->getMessage());
+    //     }
+    // }
+
+

@@ -44,6 +44,9 @@ class EmpresaController extends Controller
             'codigo_municipio' => 'required|string|max:20',
             'codigo_pais' => 'nullable|string|max:10|',
             'ambiente' => 'nullable|string',
+            'crt' => 'required|integer|in:1,2,3,4',
+            'cnae' => 'required|string|max:10',
+
 
             // Campos condicionais
             'cnpj' => 'required_if:tipo_pessoa,cnpj|nullable|string|size:14',
@@ -77,7 +80,8 @@ class EmpresaController extends Controller
                 'inscricao_municipal' => $request->inscricao_municipal,
                 'fone' => $request->fone,
                 'email' => $request->email,
-               
+                'crt' => $request->crt,
+                'cnae' => $request->cnae,
             ]);
 
             $pais = $request->pais ?? 'Brasil';
@@ -97,7 +101,7 @@ class EmpresaController extends Controller
                 'codigo_pais' => $codigo_pais,
             ]);
 
-             Log::info('Endereço criado:', $endereco->toArray());
+            // Log::info('Endereço criado:', $endereco->toArray());
             
             DB::commit();
 

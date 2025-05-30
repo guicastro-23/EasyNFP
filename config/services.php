@@ -36,10 +36,16 @@ return [
     ],
 
     'nuvemfiscal' => [
-        'client_id' => env('NUVEMFISCAL_CLIENTID'),
-        'client_secret' => env('NUVEMFISCAL_CLIENTSECRET'),
-        'auth_url' => env('NUVEMFISCAL_AUTH_URL', 'https://auth.nuvemfiscal.com.br/oauth/token'),
-        'api_url' => env('NUVEMFISCAL_API_URL', 'https://api.nuvemfiscal.com.br'),
+        'homologacao' => [
+            'client_id' => env('NUVEMFISCAL_HOMOLOGACAO_CLIENT_ID'),
+            'client_secret' => env('NUVEMFISCAL_HOMOLOGACAO_CLIENT_SECRET'),
+            'base_url' => 'https://api.sandbox.nuvemfiscal.com.br',
+        ],
+        'producao' => [
+            'client_id' => env('NUVEMFISCAL_PRODUCAO_CLIENT_ID'),
+            'client_secret' => env('NUVEMFISCAL_PRODUCAO_CLIENT_SECRET'),
+            'base_url' => 'https://api.nuvemfiscal.com.br',
+        ]
     ],
 
 
