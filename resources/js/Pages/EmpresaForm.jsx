@@ -71,22 +71,24 @@ export default function EmpresaForm() {
         {tipoPessoa === 'cnpj' && (
           <>
             <div>
-              <label>CNPJ</label>
+              <label>CNPJ  <span style={{ color: 'red' }}>*</span> </label>
               <input
                 type="text"
                 className="w-full border rounded p-2"
                 value={data.cnpj || ''}
                 onChange={(e) => setData('cnpj', e.target.value)}
+                required
               />
               {errors.cnpj && <div className="text-red-500">{errors.cnpj}</div>}
             </div>
             <div>
-              <label>Razão Social</label>
+              <label>Nome <span style={{color: 'red'}}>*</span></label> {/* Razão Social  */}
               <input
                 type="text"
                 className="w-full border rounded p-2"
                 value={data.razao_social || ''}
                 onChange={(e) => setData('razao_social', e.target.value)}
+                required
               />
               {errors.razao_social && <div className="text-red-500">{errors.razao_social}</div>}
             </div>
@@ -106,22 +108,24 @@ export default function EmpresaForm() {
         {tipoPessoa === 'cpf' && (
           <>
             <div>
-              <label>CPF</label>
+              <label>CPF <span style={{color: 'red'}}>*</span></label>
               <input
                 type="text"
                 className="w-full border rounded p-2"
                 value={data.cpf || ''}
                 onChange={(e) => setData('cpf', e.target.value)}
+                required
               />
               {errors.cpf && <div className="text-red-500">{errors.cpf}</div>}
             </div>
             <div>
-              <label>Nome</label>
+              <label>Nome <span style={{color: 'red'}}>*</span></label>
               <input
                 type="text"
                 className="w-full border rounded p-2"
                 value={data.nome || ''}
                 onChange={(e) => setData('nome', e.target.value)}
+                required
               />
               {errors.nome && <div className="text-red-500">{errors.nome}</div>}
             </div>
@@ -150,12 +154,13 @@ export default function EmpresaForm() {
 
         {/* Contato */}
         <div>
-          <label>Email</label>
+          <label>Email <span style={{color: 'red'}}>*</span></label>
           <input
             type="email"
             className="w-full border rounded p-2"
             value={data.email || ''}
             onChange={(e) => setData('email', e.target.value)}
+            required
           />
           {errors.email && <div className="text-red-500">{errors.email}</div>}
         </div>
@@ -172,34 +177,37 @@ export default function EmpresaForm() {
 
         {/* Endereço */}
         <div>
-          <label>CEP</label>
+          <label>CEP <span style={{color:'red'}}>*</span></label>
           <input
             type="text"
             className="w-full border rounded p-2"
             value={data.cep || ''}
             onChange={(e) => setData('cep', e.target.value)}
+            required
           />
           {errors.cep && <div className="text-red-500">{errors.cep}</div>}
         </div>
 
         <div>
-          <label>Logradouro</label>
+          <label>Logradouro <span style={{color: 'red'}}>*</span></label>
           <input
             type="text"
             className="w-full border rounded p-2"
             value={data.logradouro || ''}
             onChange={(e) => setData('logradouro', e.target.value)}
+            required
           />
           {errors.logradouro && <div className="text-red-500">{errors.logradouro}</div>}
         </div>
 
         <div>
-          <label>Número</label>
+          <label>Número <span style={{color:'red'}}>*</span></label>
           <input
             type="text"
             className="w-full border rounded p-2"
             value={data.numero || ''}
             onChange={(e) => setData('numero', e.target.value)}
+            required
           />
         </div>
 
@@ -214,12 +222,13 @@ export default function EmpresaForm() {
         </div>
 
         <div>
-          <label>Bairro</label>
+          <label>Bairro <span style={{color: 'red'}}>*</span></label>
           <input
             type="text"
             className="w-full border rounded p-2"
             value={data.bairro || ''}
             onChange={(e) => setData('bairro', e.target.value)}
+            required
           />
           {errors.bairro && <div className="text-red-500">{errors.bairro}</div>}
         </div>
@@ -236,12 +245,13 @@ export default function EmpresaForm() {
         </div>
 
         <div>
-          <label>UF</label>
+          <label>UF <span style={{color:'red'}}>*</span></label>
           <input
             type="text"
             className="w-full border rounded p-2"
             value={data.uf || ''}
             onChange={(e) => setData('uf', e.target.value)}
+            required
           />
           {errors.uf && <div className="text-red-500">{errors.uf}</div>}
         </div>
@@ -257,12 +267,13 @@ export default function EmpresaForm() {
         </div>
 
         <div>
-          <label>Código do Município (IBGE)</label>
+          <label>Código do Município (IBGE) <span style={{color:'red'}}>*</span></label>
           <input
             type="text"
             className="w-full border rounded p-2"
             value={data.codigo_municipio || ''}
             onChange={(e) => setData('codigo_municipio', e.target.value)}
+            required
           />
           {errors.codigo_municipio && <div className="text-red-500">{errors.codigo_municipio}</div>}
         </div>
