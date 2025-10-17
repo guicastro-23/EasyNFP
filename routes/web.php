@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DestinatarioController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -29,6 +30,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/empresa/cadastrar', fn () => Inertia::render('EmpresaForm'))->name('empresa.create');
     Route::post('/empresa/cadastrar', [EmpresaController::class, 'store'])->name('empresa.store');
 });
+
+Route::middleware('auth')->prefix('destinatario')->group(function(){
+        Route::get('/', [DestinatarioController::class,'index'])->name('destinatario.index');
+        Route::get('/cadastrar', [DestinatarioController::class,'create'])->name('destinatario.create');
+        ROUTE::post('/cadastrar', [DestinatarioController::class, 'store'])->name('destinatario.store');
+    });
 
 
 Route::post('/consulta-cep', [EmpresaController::class, 'consultarCep'])->middleware('auth');
