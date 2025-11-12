@@ -41,7 +41,7 @@ export default function Create() {
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label>Tipo de Pessoa <span className="text-red-500">*</span></label>
+                        <label>Tipo de Pessoa </label>
                         <select
                             className="w-full border rounded p-2"
                             value={tipoPessoa}
@@ -57,24 +57,26 @@ export default function Create() {
 
                     {tipoPessoa === 'cpf' && (
                         <div>
-                            <label>CPF</label>
+                            <label>CPF <span className="text-red-500">*</span></label>
                             <input
                                 type="text"
                                 className="w-full border rounded p-2"
                                 value={data.cpf}
                                 onChange={(e) => setData('cpf', e.target.value)}
+                                required
                             />
                         </div>
                     )}
 
                     {tipoPessoa === 'cnpj' && (
                         <div>
-                            <label>CNPJ</label>
+                            <label>CNPJ <span className="text-red-500">*</span></label>
                             <input
                                 type="text"
                                 className="w-full border rounded p-2"
                                 value={data.cnpj}
                                 onChange={(e) => setData('cnpj', e.target.value)}
+                                required
                             />
                         </div>
                     )}
@@ -125,6 +127,16 @@ export default function Create() {
                     </div>
 
                     <div>
+                        <label>Telefone</label>
+                        <input
+                            type="tel"
+                            className="w-full border rounded p-2"
+                            value={data.endereco.fone}
+                            onChange={(e) => setData('endereco.fone', e.target.value)}
+                        />
+                    </div>
+
+                    <div>
                         <label>Email</label>
                         <input
                             type="email"
@@ -139,60 +151,66 @@ export default function Create() {
 
                     <div className="grid grid-cols-2 gap-4">
                         <div>
-                            <label>Logradouro</label>
+                            <label>Logradouro <span className="text-red-500">*</span></label>
                             <input
                                 type="text"
                                 className="w-full border rounded p-2"
                                 value={data.endereco.xlgr}
                                 onChange={(e) => setData('endereco.xlgr', e.target.value)}
+                                required
                             />
                         </div>
                         <div>
-                            <label>Número</label>
+                            <label>Número <span className="text-red-500">*</span></label>
                             <input
                                 type="text"
                                 className="w-full border rounded p-2"
                                 value={data.endereco.nro}
                                 onChange={(e) => setData('endereco.nro', e.target.value)}
+                                redquired
                             />
                         </div>
                         <div>
-                            <label>Bairro</label>
+                            <label>Bairro <span className="text-red-500">*</span></label>
                             <input
                                 type="text"
                                 className="w-full border rounded p-2"
                                 value={data.endereco.xBairro}
                                 onChange={(e) => setData('endereco.xBairro', e.target.value)}
+                                required
                             />
                         </div>
                         <div>
-                            <label>Município</label>
+                            <label>Município <span className='text-red-500'>*</span></label>
                             <input
                                 type="text"
                                 className="w-full border rounded p-2"
                                 value={data.endereco.xMun}
                                 onChange={(e) => setData('endereco.xMun', e.target.value)}
+                                required
                             />
                         </div>
                         <div>
-                            <label>Código do Cidade</label>
+                            <label>Código da Cidade <span className='text-red-500'>*</span></label>
                             <input type="text"
                                 className="w-full border rounded p-2" 
                                 value={data.endereco.cMun}
                                 onChange={(e) => setData('endereco.cMun', e.target.value)}
+                                required
                             />
                         </div>
                         <div>
-                            <label>UF</label>
+                            <label>UF <span className='text-red-500'>*</span></label>
                             <input
                                 type="text"
                                 className="w-full border rounded p-2"
                                 value={data.endereco.UF}
                                 onChange={(e) => setData('endereco.UF', e.target.value)}
+                                required
                             />
                         </div>
                         <div>
-                            <label>CEP</label>
+                            <label>CEP <span className='text-red-500'>*</span></label>
                             <input
                                 type="text"
                                 className="w-full border rounded p-2"

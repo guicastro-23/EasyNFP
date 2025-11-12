@@ -177,7 +177,7 @@ export default function EmpresaForm() {
 
         {/* Endereço */}
         <div>
-          <label>CEP <span style={{color:'red'}}>*</span></label>
+          <label>CEP <span className="text-red-500">*</span></label>
           <input
             type="text"
             className="w-full border rounded p-2"
@@ -189,7 +189,7 @@ export default function EmpresaForm() {
         </div>
 
         <div>
-          <label>Logradouro <span style={{color: 'red'}}>*</span></label>
+          <label>Logradouro <span className="text-red-500">*</span></label>
           <input
             type="text"
             className="w-full border rounded p-2"
