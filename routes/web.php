@@ -37,6 +37,10 @@ Route::middleware('auth')->prefix('destinatario')->group(function(){
         ROUTE::post('/cadastrar', [DestinatarioController::class, 'store'])->name('destinatario.store');
     });
 
+Route::middleware('auth')->prefix('produto')->group(function(){
+    Route::get('');
+});
+
 
 Route::post('/consulta-cep', [EmpresaController::class, 'consultarCep'])->middleware('auth');
 

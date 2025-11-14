@@ -73,7 +73,7 @@ class DestinatarioController extends Controller
                 'xBairro' => $request->input('endereco.xBairro'),
                 'cMun' => $request->input('endereco.cMun'),
                 'xMun' => $request->input('endereco.xMun'),
-                'UF' => $request->input('endereco.UF'),
+                'UF' => strtoupper($request->input('endereco.UF')),
                 'CEP' => $request->input('endereco.CEP'),
                 'cPais' => $request->input('endereco.cPais') ?? '1058',
                 'xPais' => $request->input('endereco.xPais') ?? 'Brasil',
@@ -95,10 +95,11 @@ class DestinatarioController extends Controller
 
             DB::commit();
 
-            return redirect()->route('destinatarios.index')
+            return redirect()->route('destinatario.index')
                 ->with('success', 'Destinatário cadastrado com sucesso!');
         } catch (Exception $e) {
             DB::rollBack();
+            
             return redirect()->back()
                 ->with('error', 'Erro ao cadastrar destinatário. ' . $e->getMessage())
                 ->withInput();

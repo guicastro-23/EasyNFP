@@ -167,7 +167,7 @@ export default function Create() {
                                 className="w-full border rounded p-2"
                                 value={data.endereco.nro}
                                 onChange={(e) => setData('endereco.nro', e.target.value)}
-                                redquired
+                                required
                             />
                         </div>
                         <div>
@@ -205,7 +205,7 @@ export default function Create() {
                                 type="text"
                                 className="w-full border rounded p-2"
                                 value={data.endereco.UF}
-                                onChange={(e) => setData('endereco.UF', e.target.value)}
+                                onChange={(e) => setData('endereco.UF', e.target.value.toUpperCase())}
                                 required
                             />
                         </div>
