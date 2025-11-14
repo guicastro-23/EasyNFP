@@ -60,11 +60,17 @@ export default function Create() {
                             <label>CPF <span className="text-red-500">*</span></label>
                             <input
                                 type="text"
+                                maxLength={11}
                                 className="w-full border rounded p-2"
                                 value={data.cpf}
                                 onChange={(e) => setData('cpf', e.target.value)}
                                 required
                             />
+                            {data.cpf && data.cpf.length !== 11 && (
+                                <span className="text-red-500 text-sm">
+                                 O CPF deve ter exatamente 11 dígitos.
+                            </span>
+)}
                         </div>
                     )}
 
@@ -73,11 +79,17 @@ export default function Create() {
                             <label>CNPJ <span className="text-red-500">*</span></label>
                             <input
                                 type="text"
+                                maxLength={14}
                                 className="w-full border rounded p-2"
                                 value={data.cnpj}
                                 onChange={(e) => setData('cnpj', e.target.value)}
                                 required
                             />
+                            {data.cnpj && data.cnpj.length !== 14 && (
+                                <span className="text-red-500 text-sm">
+                                    O CNPJ deve ter exatamente 14 dígitos.
+                                </span>
+)}
                         </div>
                     )}
 
