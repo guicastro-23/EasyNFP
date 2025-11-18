@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DestinatarioController;
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -38,7 +39,7 @@ Route::middleware('auth')->prefix('destinatario')->group(function(){
     });
 
 Route::middleware('auth')->prefix('produto')->group(function(){
-    Route::get('');
+    Route::get('/',[ProdutoController::class,'index'])->name('produto.index');
 });
 
 
