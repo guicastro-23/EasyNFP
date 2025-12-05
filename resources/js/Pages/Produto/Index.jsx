@@ -11,6 +11,17 @@
                 >
                     Novo Produto
                 </Link>
+
+                <table className='w-full border'>
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nome</th>
+                            <th>Und.</th>
+                        </tr>
+                    </thead>
+
+                </table>
             </div>
         </AuthenticatedLayout>
     )
