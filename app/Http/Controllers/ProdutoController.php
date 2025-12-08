@@ -17,4 +17,9 @@ class ProdutoController extends Controller
             'produtos' => $produtos,
         ]);
     }
+
+    public function create(): Response
+    {
+        return Inertia::render('Produto/Create');
+    }
 }

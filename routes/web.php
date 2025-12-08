@@ -40,6 +40,7 @@ Route::middleware('auth')->prefix('destinatario')->group(function(){
 
 Route::middleware('auth')->prefix('produto')->group(function(){
     Route::get('/',[ProdutoController::class,'index'])->name('produto.index');
+    Route::get('/cadastrar',[ProdutoController::class,'create'])->name('produto.create');
 });
 
 
