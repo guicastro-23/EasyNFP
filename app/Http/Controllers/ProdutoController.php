@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use Inertia\Response;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ProdutoRequest;
 
 class ProdutoController extends Controller
 {
@@ -23,8 +24,12 @@ class ProdutoController extends Controller
         return Inertia::render('Produto/Create');
     }
 
-    public function store(Request $request)
+    public function store(ProdutoRequest $request)
     {
-        
+        Produto::create($request->validated());
+
+        return redirect()
+            ->route('produto.index')
+            ->with('success', 'Produto criando com sucesso!');
     } 
 }

@@ -22,10 +22,14 @@ class ProdutoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'cProd' => 'required|string|max:60|unique:produtos,cProd',
-            'xProd' => 'required|string|max120',
-            'cEAN' => 'required|string|',
-            
+            'cProd'    => 'required|string|max:60|unique:produtos,cProd',
+            'xProd'    => 'required|string|max:120',
+            'cEAN'     => 'required|string',
+            'cEANTrib' => 'required|string',
+            'ncm'      => 'required|string|size:8', 
+            'cest'     => 'nullable|string', 
+            'uCom'     => 'required|string|max:6',
+            'uTrib'    => 'required|string|max:6',
         ];
     }
 }
