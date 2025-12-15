@@ -22,4 +22,9 @@ class ProdutoController extends Controller
     {
         return Inertia::render('Produto/Create');
     }
+
+    public function store(Request $request)
+    {
+        
+    } 
 }
