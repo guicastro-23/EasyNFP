@@ -61,7 +61,7 @@ export default function AuthenticatedLayout({ header, children }) {
                                             Cliente
                                         </Dropdown.Link>
 
-                                        <Dropdown.Link href="#">
+                                        <Dropdown.Link href={route('produto.index')}>
                                             Produtos
                                         </Dropdown.Link>
                                     </Dropdown.Content>
