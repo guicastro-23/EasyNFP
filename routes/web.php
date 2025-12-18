@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DestinatarioController;
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\NotaController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -42,6 +43,10 @@ Route::middleware('auth')->prefix('produto')->group(function(){
     Route::get('/',[ProdutoController::class,'index'])->name('produto.index');
     Route::get('/cadastrar',[ProdutoController::class,'create'])->name('produto.create');
     Route::post('/cadastrar', [ProdutoController::class,'store'])->name('produto.store');
+});
+
+Route::middleware('auth')->prefix('notas')->group(function(){
+    Route::get('/',[NotaController::class,'index'])->name('nota.index');
 });
 
 
