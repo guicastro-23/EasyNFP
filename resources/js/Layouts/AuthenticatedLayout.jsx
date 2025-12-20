@@ -67,7 +67,10 @@ export default function AuthenticatedLayout({ header, children }) {
                                     </Dropdown.Content>
                                 </Dropdown>
 
-                                <NavLink>
+                                <NavLink
+                                    href={route('nota.index')}
+                                    active={route().current('nota.index')}
+                                >
                                     Emitir Notas
                                 </NavLink>
                             </div>
