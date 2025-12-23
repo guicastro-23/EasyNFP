@@ -56,8 +56,7 @@ return new class extends Migration
             $table->string('pj_no_ie_cfop', 4)->nullable();
 
             // TRIBUTAÇÃO – SIMPLES NACIONAL (CSOSN)
-            $table->string('pf_ie_csosn', 3)->nullable();
-            $table->string('pf_no_ie_csosn', 3)->nullable();
+          
             $table->string('pj_ie_csosn', 3)->nullable();
             $table->string('pj_no_ie_csosn', 3)->nullable();
 
@@ -88,8 +87,8 @@ return new class extends Migration
             // --------------------------------------------------------------------
             // CHAVES ESTRANGEIRAS – CFOP
             // --------------------------------------------------------------------
-            $table->foreign('pj_ie_cfop')->references('codigo')->on('cfop')->restrictOnDelete();
-            $table->foreign('pj_no_ie_cfop')->references('codigo')->on('cfop')->restrictOnDelete();
+            $table->foreign('pj_ie_cfop')->references('codigo')->on('cfops')->restrictOnDelete();
+            $table->foreign('pj_no_ie_cfop')->references('codigo')->on('cfops')->restrictOnDelete();
 
             $table->foreign('pj_ie_csosn')->references('codigo')->on('csosn')->restrictOnDelete();
             $table->foreign('pj_no_ie_csosn')->references('codigo')->on('csosn')->restrictOnDelete();
