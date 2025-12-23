@@ -71,7 +71,7 @@ export default function AuthenticatedLayout({ header, children }) {
                                     href={route('nota.index')}
                                     active={route().current('nota.index')}
                                 >
-                                    Emitir Notas
+                                    Notas
                                 </NavLink>
                             </div>
                                
