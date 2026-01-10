@@ -15,8 +15,8 @@ return new class extends Migration
             $table->string('codigo', 3)->primary();
             $table->string('descricao', 255);
             $table->timestamps();
-    });
-        }
+        });
+    }
 
     /**
      * Reverse the migrations.
