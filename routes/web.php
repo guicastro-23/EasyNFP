@@ -49,6 +49,9 @@ Route::middleware('auth')->prefix('notas')->group(function(){
     Route::get('/',[NotaController::class,'index'])->name('nota.index');
 });
 
+Route::middleware('auth')->prefix('naturezaop')->group(function(){
+    ROUTE::get('/',);
+});
 
 Route::post('/consulta-cep', [EmpresaController::class, 'consultarCep'])->middleware('auth');
 
