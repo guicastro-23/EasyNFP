@@ -10,9 +10,9 @@ use Illuminate\Http\Request;
 
 class NaturezaOperacoesController extends Controller
 {
-    public function index(): Response
+    public function index()
     {
-        
+        return Inertia::render('NaturezaOperacao/Index');
     }
 
 }

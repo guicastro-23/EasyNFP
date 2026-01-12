@@ -129,5 +129,5 @@ class NaturezaOperacao extends Model
         return $this->belongsTo(Csosn::class, 'pj_ie_csosn', 'codigo');
     }
 
-    // 👉 Os outros relacionamentos seguem o mesmo padrão
+    
 }

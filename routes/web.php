@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DestinatarioController;
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\NaturezaOperacoesController;
 use App\Http\Controllers\NotaController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\ProfileController;
@@ -49,8 +50,8 @@ Route::middleware('auth')->prefix('notas')->group(function(){
     Route::get('/',[NotaController::class,'index'])->name('nota.index');
 });
 
-Route::middleware('auth')->prefix('naturezaop')->group(function(){
-    ROUTE::get('/',);
+Route::middleware('auth')->prefix('naturezas')->group(function(){
+    Route::get('/',[NaturezaOperacoesController::class,'index'])->name('naturezas.index');
 });
 
 Route::post('/consulta-cep', [EmpresaController::class, 'consultarCep'])->middleware('auth');
