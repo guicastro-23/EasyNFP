@@ -12,7 +12,12 @@ class NaturezaOperacoesController extends Controller
 {
     public function index()
     {
-        return Inertia::render('NaturezaOperacao/Index');
+        return Inertia::render('Natureza/Index');
+    }
+
+    public function create(): Response
+    {
+        return Inertia::render('Natureza/Create');
     }
 
 }
