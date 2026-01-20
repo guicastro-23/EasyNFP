@@ -12,7 +12,13 @@ class NaturezaOperacoesController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Natureza/Index');
+        $naturezas = NaturezaOperacao::query()
+            ->orderBy('created_at')
+            ->get();
+
+        return Inertia::render('Natureza/Index', [
+            'naturezas' => $naturezas,
+        ]);
     }
 
     public function create(): Response
