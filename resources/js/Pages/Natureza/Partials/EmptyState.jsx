@@ -10,11 +10,11 @@ export default function EmptyState() {
                 </div>
             </div>
 
-            <h1 className="text-xl font-bold text-gray-900">
+            <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100">
                 Nenhuma natureza de operação encontrada
             </h1>
 
-            <p className="text-gray-500 text-sm mt-3 max-w-sm">
+            <p className="text-gray-500 dark:text-gray-400  text-sm mt-3 max-w-sm">
                 As naturezas de operação definem as regras tributárias para a emissão das suas notas fiscais.
                 Comece cadastrando a sua primeira natureza.
             </p>
