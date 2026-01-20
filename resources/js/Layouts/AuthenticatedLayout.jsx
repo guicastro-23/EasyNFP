@@ -3,10 +3,13 @@ import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link, usePage } from '@inertiajs/react';
+import useTheme from '@/hooks/useTheme';
 import { useState } from 'react';
 
 export default function AuthenticatedLayout({ header, children }) {
     const user = usePage().props.auth.user;
+    const { theme, toggleTheme } = useTheme();
+
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return (
@@ -159,6 +162,15 @@ export default function AuthenticatedLayout({ header, children }) {
                         </div>
 
                         <div className="mt-3 space-y-1">
+                            <button
+                                onClick={toggleTheme}
+                                className="ml-4 p-2 rounded-md
+                                 bg-gray-200 dark:bg-gray-700
+                                 text-gray-700 dark:text-gray-200
+                                 hover:bg-gray-300 dark:hover:bg-gray-600"
+                            >
+                                {theme === 'dark' ? 'Escuro' : 'Claro'}
+                            </button>
                             <ResponsiveNavLink href={route('profile.edit')}>
                                 Profile
                             </ResponsiveNavLink>
