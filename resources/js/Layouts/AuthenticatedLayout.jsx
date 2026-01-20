@@ -56,7 +56,7 @@ export default function AuthenticatedLayout({ header, children }) {
                                         </span>
                                     </Dropdown.Trigger>
                                     <Dropdown.Content align="left" width="48">
-                                    <Dropdown.Link href={route('empresa.create')}>
+                                        <Dropdown.Link href={route('empresa.create')}>
                                             Empresa
                                         </Dropdown.Link>
 
@@ -77,7 +77,7 @@ export default function AuthenticatedLayout({ header, children }) {
                                     Notas
                                 </NavLink>
                             </div>
-                               
+
                         </div>
 
                         <div className="hidden sm:ms-6 sm:flex sm:items-center">
@@ -162,15 +162,38 @@ export default function AuthenticatedLayout({ header, children }) {
                         </div>
 
                         <div className="mt-3 space-y-1">
-                            <button
-                                onClick={toggleTheme}
-                                className="ml-4 p-2 rounded-md
-                                 bg-gray-200 dark:bg-gray-700
-                                 text-gray-700 dark:text-gray-200
-                                 hover:bg-gray-300 dark:hover:bg-gray-600"
-                            >
-                                {theme === 'dark' ? 'Escuro' : 'Claro'}
-                            </button>
+                            <label className="relative inline-flex items-center cursor-pointer">
+                                {/* Input invisível */}
+                                <input
+                                    type="checkbox"
+                                    className="sr-only peer"
+                                    checked={theme === 'dark'}
+                                    onChange={toggleTheme}
+                                />
+
+                                {/* Trilha */}
+                                <div
+                                    className="
+                                        w-11 h-6 rounded-full
+                                        bg-gray-300 dark:bg-gray-600
+                                        peer-focus:ring-2 peer-focus:ring-primary/40
+                                        transition-colors
+                                    "
+                                ></div>
+
+                                {/* Bolinha */}
+                                <div
+                                    className="
+                                        absolute left-1 top-1
+                                        w-4 h-4 rounded-full
+                                        bg-white
+                                        transition-transform
+                                        peer-checked:translate-x-5
+                                    "
+                                    
+                                ></div>
+                            </label>
+
                             <ResponsiveNavLink href={route('profile.edit')}>
                                 Profile
                             </ResponsiveNavLink>
