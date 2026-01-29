@@ -46,7 +46,7 @@ return new class extends Migration
             // -------------------------------------------------
             // CLASSIFICAÇÃO TRIBUTÁRIA (NÚCLEO FISCAL)
             // -------------------------------------------------
-            $table->unsignedBigInteger('classificacao_tributaria_id');
+            $table->unsignedBigInteger('classificacao_tributaria_id')->nullable();
 
             $table->foreign(
                 'classificacao_tributaria_id',
