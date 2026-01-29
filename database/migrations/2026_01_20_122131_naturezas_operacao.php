@@ -14,8 +14,9 @@ return new class extends Migration
             // -------------------------------------------------
             // IDENTIFICAÇÃO
             // -------------------------------------------------
-            $table->string('descricao', 120);
+           
             $table->string('natOp', 60);
+            $table->string('descricao', 120)->nullable();
             $table->boolean('ativo')->default(true);
 
             // -------------------------------------------------
