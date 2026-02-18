@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             CstPisSeeder::class,
             CstCofinsSeeder::class,
             CstIbsCbsSeeder::class,
+            ClassificacaoTributariaSeeder::class,
     
        ]);
     }
