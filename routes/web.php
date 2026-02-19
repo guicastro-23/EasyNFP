@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClassificacaoTributariaController;
 use App\Http\Controllers\DestinatarioController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\NaturezaOperacoesController;
@@ -53,6 +54,10 @@ Route::middleware('auth')->prefix('notas')->group(function(){
 Route::middleware('auth')->prefix('naturezas')->group(function(){
     Route::get('/',[NaturezaOperacoesController::class,'index'])->name('naturezas.index');
     Route::get('/cadastrar',[NaturezaOperacoesController::class,'create'])->name('naturezas.create');
+});
+
+Route::middleware('auth')->prefix('classificacoes')->group(function(){
+    Route::get('/',[ClassificacaoTributariaController::class,'index'])->name('classificacoes.index');
 });
 
 Route::post('/consulta-cep', [EmpresaController::class, 'consultarCep'])->middleware('auth');
