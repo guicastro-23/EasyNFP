@@ -4,9 +4,9 @@ export default function Index({ classificacoes }) {
     return (
         <AuthenticatedLayout>
             <div className="max-w-5xl mx-auto p-6 space-y-6">
-                <h1 className="text-2xl font-bold">
+                <h2 className="text-2xl font-bold">
                     Classificações Tributárias
-                </h1>
+                </h2>
 
                 {classificacoes.map((c) => (
                     <div

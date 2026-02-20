@@ -31,8 +31,6 @@ export default function Create({ classificacoes = [], cfops = [] }) {
         <AuthenticatedLayout>
             <div className="bg-background-light dark:bg-background-dark min-h-screen">
 
-
-
                 <form
                     onSubmit={handleSubmit((data) => onSubmit(data, "rascunho"))}
                     className="max-w-3xl mx-auto p-6 space-y-8"

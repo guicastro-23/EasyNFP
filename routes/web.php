@@ -58,6 +58,7 @@ Route::middleware('auth')->prefix('naturezas')->group(function(){
 
 Route::middleware('auth')->prefix('classificacoes')->group(function(){
     Route::get('/',[ClassificacaoTributariaController::class,'index'])->name('classificacoes.index');
+    Route::get('/cadastrar',[ClassificacaoTributariaController::class,'create'])->name('classificacoes.create');
 });
 
 Route::post('/consulta-cep', [EmpresaController::class, 'consultarCep'])->middleware('auth');
